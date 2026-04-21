@@ -18,4 +18,4 @@ class MessageBus:
     
     def broadcast(self, performative, content, sender, all_ids):
         for aid in all_ids:
-        self.send(aid, performative, content, sender)
+            self.send(aid, performative, content, sender)
