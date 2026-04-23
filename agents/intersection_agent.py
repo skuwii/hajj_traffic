@@ -1,10 +1,12 @@
+from xml.parsers.expat import model
+
 import mesa
 from interfaces import PERFORMATIVES, SEGMENT_TO_APPROACH
 from utils.csp_solver import solve_csp
 
 class IntersectionAgent(mesa.Agent):
-    def __init__(self, unique_id, model, bus, node_id):
-        super().__init__(unique_id, model)
+    def __init__(self, model, bus, node_id):
+        super().__init__(model)
         self.bus = bus
         self.node_id = node_id
         self.queue_lengths = {'N': 0, 'S': 0}
