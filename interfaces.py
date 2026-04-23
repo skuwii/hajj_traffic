@@ -9,3 +9,8 @@ MESSAGE_SCHEMA = {
 'content': dict, # payload (route, segment_id, phase, etc.)
 'tick': int # simulation timestamp
 }
+
+SEGMENT_TO_APPROACH = {
+    ('haram', 'aziziyah'): 'S',
+    ('mina_gate', 'aziziyah'): 'N',
+}
