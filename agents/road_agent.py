@@ -1,7 +1,7 @@
 import mesa, random
 class RoadAgent(mesa.Agent):
-    def __init__(self, unique_id, model, graph, bus):
-        super().__init__(unique_id, model)
+    def __init__(self, model, graph, bus):
+        super().__init__(model)
         self.graph = graph
         self.bus = bus
         self.belief = {(u,v): 0 for u,v in graph.edges()}
