@@ -15,16 +15,21 @@ def heuristic(graph, node, goal):
 def astar(graph, start, goal):
     queue = [(0, start, [start])] # (f_cost, node, path)
     visited = set()
+    
     while queue:
-    f, current, path = heapq.heappop(queue)
-    if current == goal: return path
-    if current in visited: continue
-    visited.add(current)
-    for nb in graph.neighbors(current):
-        if nb not in visited:
-            g = sum(edge_weight(graph, path[i], path[i+1])
-                for i in range(len(path)-1))
-            g += edge_weight(graph, current, nb)
-        h = heuristic(graph, nb, goal)
-        heapq.heappush(queue, (g+h, nb, path+[nb]))
+        f, current, path = heapq.heappop(queue)
+        if current == goal: 
+            return path
+        if current in visited: 
+            continue
+        visited.add(current)
+
+        for nb in graph.neighbors(current):
+            if nb not in visited:
+                g = sum(edge_weight(graph, path[i], path[i+1])
+                    for i in range(len(path)-1))
+                g += edge_weight(graph, current, nb)
+                h = heuristic(graph, nb, goal)
+                heapq.heappush(queue, (g+h, nb, path+[nb]))
+
     return [] # no route found
