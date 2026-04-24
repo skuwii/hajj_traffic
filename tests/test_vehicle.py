@@ -18,9 +18,7 @@ class MockModel(mesa.Model):
         return [a.unique_id for a in self.agents]
 
 def test_basic_navigation():
-    print("\n" + "="*60)
-    print("TEST 1: Basic navigation (no messages)")
-    print("="*60)
+    print("TEST 1: Basic navigation (no messages)\n")
 
     model   = MockModel()
     vehicle = VehicleAgent(model, start="mina_gate", destination="haram")
@@ -44,9 +42,8 @@ def test_basic_navigation():
     print("PASSED")
 
 def test_reroute_replanning():
-    print("\n" + "="*60)
-    print("TEST 2: REROUTE message triggers replanning")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 2: REROUTE message triggers replanning\n")
 
     model   = MockModel()
     vehicle = VehicleAgent(model, start="mina_gate", destination="haram")
@@ -74,9 +71,8 @@ def test_reroute_replanning():
     print("PASSED")
 
 def test_inform_updates_belief():
-    print("\n" + "="*60)
-    print("TEST 3: INFORM message updates belief map")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 3: INFORM message updates belief map\n")
 
     model   = MockModel()
     vehicle = VehicleAgent(model, start="mina_gate", destination="haram")
@@ -110,9 +106,8 @@ def test_inform_updates_belief():
     print("PASSED")
 
 def test_clear_yields():
-    print("\n" + "="*60)
-    print("TEST 4: CLEAR message pauses movement for 3 ticks")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 4: CLEAR message pauses movement for 3 ticks\n")
 
     model   = MockModel()
     vehicle = VehicleAgent(model, start="mina_gate", destination="haram")
@@ -146,9 +141,8 @@ def test_clear_yields():
     print("PASSED")
 
 def test_already_arrived():
-    print("\n" + "="*60)
-    print("TEST 5: Vehicle already at destination does nothing")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 5: Vehicle already at destination does nothing\n")
 
     model   = MockModel()
     vehicle = VehicleAgent(model, start="haram", destination="haram")
@@ -156,7 +150,7 @@ def test_already_arrived():
     vehicle.step()
     print(f"Position: {vehicle.position}  |  Route: {vehicle.current_route}")
     assert vehicle.position == "haram", "Should stay at haram"
-    print("PASSED")
+    print("PASSED\n")
 
 if __name__ == "__main__":
     test_basic_navigation()
@@ -165,6 +159,4 @@ if __name__ == "__main__":
     test_clear_yields()
     test_already_arrived()
 
-    print("\n" + "="*60)
     print("ALL TESTS PASSED")
-    print("="*60)
