@@ -51,9 +51,7 @@ def drain(bus, uid):
 
 
 def test_initialisation():
-    print("\n" + "="*60)
-    print("TEST 1: Agent initialises correctly")
-    print("="*60)
+    print("TEST 1: Agent initialises correctly\n")
 
     model = MockModel()
     agent = EmergencyAgent(model,
@@ -86,9 +84,8 @@ def test_initialisation():
 
 
 def test_astar_ignores_congestion():
-    print("\n" + "="*60)
-    print("TEST 2: A* plans by distance only — ignores congestion")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 2: A* plans by distance only — ignores congestion\n")
 
     model = MockModel()
     model.graph["mina_gate"]["muzdalifah"]["occupancy"] = 120
@@ -108,9 +105,8 @@ def test_astar_ignores_congestion():
 
 
 def test_rule1_preempt_sent():
-    print("\n" + "="*60)
-    print("TEST 3: RULE 1 — PREEMPT sent to intersections ahead")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 3: RULE 1 — PREEMPT sent to intersections ahead\n")
 
     model = MockModel()
     agent = EmergencyAgent(model,
@@ -150,9 +146,8 @@ def test_rule1_preempt_sent():
 
 
 def test_rule1_no_duplicate_preempt():
-    print("\n" + "="*60)
-    print("TEST 4: RULE 1 — PREEMPT not sent twice to same intersection")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 4: RULE 1 — PREEMPT not sent twice to same intersection\n")
 
     model = MockModel()
     agent = EmergencyAgent(model, start="mina_gate", destination="haram")
@@ -180,9 +175,8 @@ def test_rule1_no_duplicate_preempt():
 
 
 def test_accept_sets_corridor_clear():
-    print("\n" + "="*60)
-    print("TEST 5: ACCEPT message → corridor_clear = True")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 5: ACCEPT message → corridor_clear = True\n")
 
     model     = MockModel()
     agent     = EmergencyAgent(model, start="mina_gate", destination="haram")
@@ -208,9 +202,8 @@ def test_accept_sets_corridor_clear():
 
 
 def test_rule2_clear_broadcast():
-    print("\n" + "="*60)
-    print("TEST 6: RULE 2 — CLEAR broadcast sent after corridor secured")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 6: RULE 2 — CLEAR broadcast sent after corridor secured\n")
 
     model     = MockModel()
     agent     = EmergencyAgent(model, start="mina_gate", destination="haram")
@@ -246,9 +239,8 @@ def test_rule2_clear_broadcast():
 
 
 def test_reject_sets_cooldown():
-    print("\n" + "="*60)
-    print("TEST 7: REJECT message → retry cooldown set, no movement")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 7: REJECT message → retry cooldown set, no movement\n")
 
     model      = MockModel()
     agent      = EmergencyAgent(model, start="mina_gate", destination="haram")
@@ -284,9 +276,8 @@ def test_reject_sets_cooldown():
 
 
 def test_rule3_double_speed_when_clear():
-    print("\n" + "="*60)
-    print("TEST 8: RULE 3 — moves 2 steps when corridor is clear")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 8: RULE 3 — moves 2 steps when corridor is clear\n")
 
     model = MockModel()
     agent = EmergencyAgent(model, start="mina_gate", destination="haram")
@@ -305,9 +296,8 @@ def test_rule3_double_speed_when_clear():
 
 
 def test_rule3_waits_for_accept():
-    print("\n" + "="*60)
-    print("TEST 9: RULE 3 — waits when PREEMPT sent but no ACCEPT received")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 9: RULE 3 — waits when PREEMPT sent but no ACCEPT received\n")
 
     model      = MockModel()
     agent      = EmergencyAgent(model, start="mina_gate", destination="haram")
@@ -325,9 +315,8 @@ def test_rule3_waits_for_accept():
 
 
 def test_full_traversal():
-    print("\n" + "="*60)
-    print("TEST 10: Full traversal mina_gate → haram")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 10: Full traversal mina_gate → haram\n")
 
     model = MockModel()
     agent = EmergencyAgent(model,
@@ -365,9 +354,8 @@ def test_full_traversal():
 
 
 def test_priority_levels():
-    print("\n" + "="*60)
-    print("TEST 11: Different vehicle types have correct priority levels")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 11: Different vehicle types have correct priority levels\n")
 
     model = MockModel()
 
@@ -390,9 +378,8 @@ def test_priority_levels():
 
 
 def test_already_arrived():
-    print("\n" + "="*60)
-    print("TEST 12: Already at destination — does nothing")
-    print("="*60)
+    print("\n" + "-"*60)
+    print("TEST 12: Already at destination — does nothing\n")
 
     model = MockModel()
     agent = EmergencyAgent(model, start="haram", destination="haram")
@@ -401,7 +388,7 @@ def test_already_arrived():
 
     print(f"  position: {agent.position} | route: {agent.current_route}")
     assert agent.position == "haram"
-    print("PASSED")
+    print("PASSED\n")
 
 
 if __name__ == "__main__":
@@ -418,6 +405,4 @@ if __name__ == "__main__":
     test_priority_levels()
     test_already_arrived()
 
-    print("\n" + "="*60)
     print("ALL TESTS PASSED")
-    print("="*60)
