@@ -103,7 +103,7 @@ class SimVisualizer:
         self._render_map(tick)
         self._render_stats(tick)
         plt.draw()
-        plt.pause(0.05)
+        plt.pause(0.1)
 
     def _render_map(self, tick):
         ax = self.ax_map

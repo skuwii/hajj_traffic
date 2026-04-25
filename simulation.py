@@ -144,8 +144,11 @@ if __name__ == "__main__":
         viz.render(tick)
         if (tick + 1) % 10 == 0:
             print(f"  Tick {tick+1:3d} | Congested: {model._count_congested()} | "
-                  f"Avg occ: {model._avg_occupancy_pct()}% | "
-                  f"Arrived: {model._count_arrived()}/{N_VEHICLES}")
+              f"Avg occ: {model._avg_occupancy_pct()}% | "
+              f"Arrived: {model._count_arrived()}/{N_VEHICLES}")
+        # if model._count_arrived() >= N_VEHICLES:
+        #     print(f"\nAll vehicles arrived at tick {tick+1}.")
+        #     break
 
     print("\nDone.")
     plot_results(model)
