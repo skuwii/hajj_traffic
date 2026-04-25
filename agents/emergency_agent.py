@@ -1,6 +1,7 @@
 import mesa
 import heapq
 import math
+from interfaces import SEGMENT_TO_APPROACH
  
  
 class EmergencyAgent(mesa.Agent):
@@ -185,11 +186,7 @@ class EmergencyAgent(mesa.Agent):
         return None
  
     def _get_approach_direction(self, from_node, to_node):
-        try:
-            from interfaces import SEGMENT_TO_APPROACH
-            return SEGMENT_TO_APPROACH.get((from_node, to_node), "N")
-        except ImportError:
-            return "N"
+        return SEGMENT_TO_APPROACH.get((from_node, to_node), "N")
  
     def _update_real_occupancy(self, u, v, delta):
         if self.model.graph.has_edge(u, v):
