@@ -1,5 +1,5 @@
 import mesa
-from interfaces import PERFORMATIVES, SEGMENT_TO_APPROACH
+from interfaces import SEGMENT_TO_APPROACH
 from utils.csp_solver import solve_csp
 
 class IntersectionAgent(mesa.Agent):
@@ -19,8 +19,6 @@ class IntersectionAgent(mesa.Agent):
             if msg['performative'] == 'INFORM':
                 road_state = msg['content'].get('road_state', {})
                 for segment, occupancy in road_state.items():
-                    if isinstance(segment, str):
-                        segment = tuple(segment.strip("()").replace("'", "").split(", "))
                     if segment in SEGMENT_TO_APPROACH:
                         approach = SEGMENT_TO_APPROACH[segment]
                         self.queue_lengths[approach] = occupancy

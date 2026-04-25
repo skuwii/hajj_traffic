@@ -1,5 +1,8 @@
-import random as rndm
+import random
 
 def simulate_sensors(graph):
     for u, v in graph.edges():
-        graph[u][v]['occupancy'] = rndm.randint(0, graph[u][v]['capacity'])
+        current = graph[u][v]['occupancy']
+        cap = graph[u][v]['capacity']
+        delta = random.randint(-5, 10)
+        graph[u][v]['occupancy'] = max(0, min(cap, current + delta))
