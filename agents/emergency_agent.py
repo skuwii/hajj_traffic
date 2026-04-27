@@ -141,6 +141,7 @@ class EmergencyAgent(mesa.Agent):
         print(f"[EmergencyAgent {self.unique_id}] "
               f"CLEAR broadcast — route ahead: {route_ahead}")
  
+        self.preemption_active = len(self.preempted_intersections) > 0
     def _rule_3_move(self):
         if not self.current_route or len(self.current_route) < 2:
             return

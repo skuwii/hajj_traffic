@@ -1,16 +1,21 @@
-# interfaces.py — all agents import from this file
 PERFORMATIVES = {'INFORM', 'REROUTE', 'PREEMPT', 'ACCEPT', 'REJECT', 'CLEAR'}
-# Agreed node names — everyone must use these exact strings
-NODES = ['haram', 'mina_gate', 'arafat', 'muzdalifah', 'aziziyah']
-# Message schema — all fields required
+
+NODES = ['haram', 'mina_gate', 'arafat', 'muzdalifah', 'aziziyah', 'jamarat', 'tunnel']
+
 MESSAGE_SCHEMA = {
-'performative': str, # one of PERFORMATIVES above
-'sender': str, # agent unique_id
-'content': dict, # payload (route, segment_id, phase, etc.)
-'tick': int # simulation timestamp
+    'performative': str,
+    'sender': str,
+    'content': dict,
+    'tick': int
 }
 
 SEGMENT_TO_APPROACH = {
-    ('haram', 'aziziyah'): 'S',
-    ('mina_gate', 'aziziyah'): 'N',
+    ('haram',      'aziziyah'):  'S',
+    ('mina_gate',  'aziziyah'):  'N',
+    ('haram',      'tunnel'):    'E',
+    ('aziziyah',   'tunnel'):    'S',
+    ('mina_gate',  'tunnel'):    'W',
+    ('aziziyah',   'jamarat'):   'E',
+    ('mina_gate',  'jamarat'):   'W',
+    ('muzdalifah', 'haram'):     'W',
 }
